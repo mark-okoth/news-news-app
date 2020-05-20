@@ -1,10 +1,13 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div v-for="article in articles" :key="article.id">
-      <h3>{{article.author}}</h3>
-      <h6>{{article.content}}</h6>
-      <p>{{article.url}}</p>
+    <div v-for="article in articles" :key="article.id" class="container">
+      <h3>{{article.title}}</h3>
+      <p>{{article.author}}  {{article.publishedAt}} on {{article.source}}</p>
+      <p>{{article.description}}</p>
+      <h6>{{article.content}}</h6>>
+      <a :href="article.url" target="_blank">follow link</a>
+      <img :src="article.urlToImage" alt="">
     </div>
   </div>
 </template>
@@ -18,39 +21,33 @@ export default {
       msg: "news app",
       articles:'articles',
       image: "image",
-      url ="url"
     };
   },
   mounted(){
      axios.get('http://newsapi.org/v2/top-headlines?' +'country=us&'+'apiKey=4b8b39c67c384341a2fcad0f266e0efd')
      .then(res => {
-       console.log(res.data)
+       console.log(res.data.articles)
      this.articles = res.data.articles
      })
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 
+.hello{
+ width: 100%;
+ margin: 0 20%;
+
+}
+.container{
+  width: 70vw;
+  display: flex;
+   flex-direction: column;
+}
 img {
-  width: 30vw;
-  height: 30vh;
+  width: 70vw;
+  height: 70vh;
+ 
 }
 </style>
