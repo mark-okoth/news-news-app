@@ -1,19 +1,22 @@
 <template>
-<div id="new">
-  <h3>{{query}}</h3>
-  <input type="text" v-model="query" placeholder="search for news">
-  <div class="hello">
-    <div v-for="article in articles" :key="article.id" class="container">
-      <div class="card">
-        <h3>{{article.title}}</h3>
-        <img :src="article.urlToImage" alt />
-        <p class="author">{{article.author}} {{article.publishedAt}}</p>
-        <p>{{article.description}}</p>
-        <br>
-        <a :href="article.url" target="_blank">Read More</a>
+  <div id="new">
+    <h3>{{msg}}</h3>
+    <form>
+      <input type="text" v-model="query" placeholder="search for news" />
+    </form>
+
+    <div class="hello">
+      <div v-for="article in articles" :key="article.id" class="container">
+        <div class="card">
+          <h3>{{article.title}}</h3>
+          <img :src="article.urlToImage" alt />
+          <p class="author">{{article.author}} {{article.publishedAt}}</p>
+          <p>{{article.description}}</p>
+          <br />
+          <a :href="article.url" target="_blank">Read More</a>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -24,18 +27,17 @@ export default {
   data() {
     return {
       msg: "news app",
-      articles: "articles",
+      articles: "",
       image: "image",
-      query:''
+      query: ""
     };
   },
   mounted() {
     axios
       .get(
-        "https://newsapi.org/v2/everything?q=sports&apiKey=4b8b39c67c384341a2fcad0f266e0efd"
+        "https://newsapi.org/v2/everything?q=technology&apiKey=4b8b39c67c384341a2fcad0f266e0efd"
       )
       .then(res => {
-        console.log(res.data.articles);
         this.articles = res.data.articles;
       });
   }
@@ -43,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-.hello{
+.hello {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -51,16 +53,15 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.card{
+.card {
   width: 20vw;
   margin: 10px;
 }
 
-
-img{
-  width:20vw;
+img {
+  width: 20vw;
 }
-a{
+a {
   background: rgb(151, 151, 228);
   text-decoration: none;
   color: white;
@@ -69,31 +70,31 @@ a{
   align-self: flex-end;
   justify-content: center;
 }
-h3{
+h3 {
   margin-top: 20px;
   text-align: center;
 }
-input{
+input {
   width: 90vw;
   outline: none;
   padding: 20px;
   margin-left: 50px;
 }
-.author{
+.author {
   font-weight: bold;
 }
-@media(max-width: 768px){
-  .hello{
+@media (max-width: 768px) {
+  .hello {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
   }
-  img{
+  img {
     width: 70vw;
   }
-  .card{
+  .card {
     width: 70vw;
   }
 }
