@@ -2,7 +2,7 @@
   <div id="new">
     <h3>{{msg}}</h3>
     <form v-on:submit.prevent="onSubmit">
-      <input type="text" v-model="query" placeholder="search for news" />
+      <input type="text" v-model="query" placeholder="search for news then press enter" />
     </form>
 
     <div class="hello">
@@ -26,7 +26,7 @@ export default {
   name: "News",
   data() {
     return {
-      msg: "news app",
+      msg: "Mark The Journalist",
       articles: [],
       image: "image",
       query: ""
@@ -48,6 +48,7 @@ export default {
       axios.get(`https://newsapi.org/v2/everything?q=${this.query}&apiKey=4b8b39c67c384341a2fcad0f266e0efd`
       ).then(res =>{
         this.articles = res.data.articles
+        this.query = ""
       })
     }
   },
