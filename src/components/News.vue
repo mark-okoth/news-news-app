@@ -73,5 +73,19 @@ h3{
   margin-top: 20px;
   text-align: center;
 }
-
+@media(max-width: 768px){
+  .hello{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+  img{
+    width: 70vw;
+  }
+  .card{
+    width: 70vw;
+  }
+}
 </style>
