@@ -14,8 +14,8 @@ npm run dev
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+##this is a news app that helps you search for news online using the news api 
+it enable you search any news across the globe
 ```
 
-##this is a news app that helps you search for news online using the news api 
+
