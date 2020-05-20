@@ -1,12 +1,13 @@
 <template>
 <div id="new">
-  <h3>News APP</h3>
+  <h3>{{query}}</h3>
+  <input type="text" v-model="query" placeholder="search for news">
   <div class="hello">
     <div v-for="article in articles" :key="article.id" class="container">
       <div class="card">
         <h3>{{article.title}}</h3>
         <img :src="article.urlToImage" alt />
-        <p>{{article.author}} {{article.publishedAt}}</p>
+        <p class="author">{{article.author}} {{article.publishedAt}}</p>
         <p>{{article.description}}</p>
         <br>
         <a :href="article.url" target="_blank">Read More</a>
@@ -24,15 +25,14 @@ export default {
     return {
       msg: "news app",
       articles: "articles",
-      image: "image"
+      image: "image",
+      query:''
     };
   },
   mounted() {
     axios
       .get(
-        "http://newsapi.org/v2/top-headlines?" +
-          "country=us&" +
-          "apiKey=4b8b39c67c384341a2fcad0f266e0efd"
+        "https://newsapi.org/v2/everything?q=sports&apiKey=4b8b39c67c384341a2fcad0f266e0efd"
       )
       .then(res => {
         console.log(res.data.articles);
@@ -61,7 +61,7 @@ img{
   width:20vw;
 }
 a{
-  background: blue;
+  background: rgb(151, 151, 228);
   text-decoration: none;
   color: white;
   padding: 15px;
@@ -72,6 +72,15 @@ a{
 h3{
   margin-top: 20px;
   text-align: center;
+}
+input{
+  width: 90vw;
+  outline: none;
+  padding: 20px;
+  margin-left: 50px;
+}
+.author{
+  font-weight: bold;
 }
 @media(max-width: 768px){
   .hello{
