@@ -19,7 +19,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "HelloWorld",
+  name: "News",
   data() {
     return {
       msg: "news app",

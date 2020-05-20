@@ -4,3 +4,14 @@
     background: black;
     color: white;
 }
+
+::placeholder{
+    color: white;
+
+}
+
+input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
