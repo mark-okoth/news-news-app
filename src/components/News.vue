@@ -2,7 +2,7 @@
   <div id="new">
     <h3>{{msg}}</h3>
     <form v-on:submit.prevent="onSubmit">
-      <input type="text" v-model="query" placeholder="search for news then press enter" />
+      <input type="text" v-model="query" placeholder="search for news then tap enter" />
     </form>
 
     <div class="hello">
